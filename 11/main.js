@@ -15,15 +15,6 @@ const words = [
     }
 ]
 
-// const vocabulary = {
-//     words: {
-//         word0:
-//         word1:
-//         word2:
-//     },
-//     wordCount: 3
-// }
-
 const notificationMessages = {
     start: {
         hello: 'Hello! Good luck!!!'
