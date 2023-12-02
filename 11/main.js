@@ -1,5 +1,3 @@
-
-
 const words = [
     {
         original: 'Wassup',
@@ -37,27 +35,18 @@ const result = {
 
 alert(notificationMessages.start.hello)
 
-const userAnswer0 = prompt(words[0].original)
-alert(userAnswer0 === words[0].translation)
-if (userAnswer0 === words[0].translation) {
-    result.correctAnswersCount++
-}
 
-const userAnswer1 = prompt(words[1].original)
-alert(userAnswer1 === words[1].translation)
-if (userAnswer1 === words[1].translation) {
-    result.correctAnswersCount++
-}
-
-const userAnswer2 = prompt(words[2].original)
-alert(userAnswer2 === words[2].translation)
-if (userAnswer2 === words[2].translation) {
-    result.correctAnswersCount++
+for (let i = 0; i < words.length; i++) {
+    let userAnswer = prompt(words[i].original)
+    alert(userAnswer === words[i].translation)
+    if (userAnswer === words[i].translation) {
+        result.correctAnswersCount++
+    }
 }
 
 let userCorrectAnswersPercent = result.correctAnswersCount / words.length * 100
 
-if ( userCorrectAnswersPercent > settings.correctAnswersMinPercent) {
+if (userCorrectAnswersPercent > settings.correctAnswersMinPercent) {
     alert(notificationMessages.result.finishSuccess)
 } else {
     alert(notificationMessages.result.finishUnsuccess)
