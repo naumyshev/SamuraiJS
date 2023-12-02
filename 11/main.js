@@ -10,6 +10,10 @@ const words = [
     {
         original: 'programmer',
         translation: 'программист'
+    },
+    {
+        original: 'Laptop',
+        translation: 'ноутбук'
     }
 ]
 
