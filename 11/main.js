@@ -39,27 +39,43 @@ const result = {
     correctAnswersCount: 0
 }
 
-//=======================
-
-//alert(notificationMessages.start.hello)
-document.write('<h3>', notificationMessages.start.hello, '</h3>', '<br>')
-document.write('-------------------', '<br>')
-
-for (let i = 0; i < words.length; i++) {
-    let userAnswer = prompt(words[i].original)
-    //alert(userAnswer === words[i].translation)
-    document.write('English:      ',words[i].original, '<br>')
-    document.write('Translation:  ',words[i].translation, '<br>')
+const showHelloMessage = (message) => {
+    document.write('<h3>', message, '</h3>', '<br>')
     document.write('-------------------', '<br>')
-    if (userAnswer === words[i].translation) {
-        result.correctAnswersCount++
+}
+
+const startTraining = (_words, _result) => {
+    for (let i = 0; i < _words.length; i++) {
+        let userAnswer = prompt(_words[i].original)
+        //alert(userAnswer === words[i].translation)
+        document.write('English:      ', _words[i].original, '<br>')
+        document.write('Translation:  ', _words[i].translation, '<br>')
+        document.write('-------------------', '<br>')
+        if (userAnswer === _words[i].translation) {
+            _result.correctAnswersCount++
+        }
     }
 }
 
-let userCorrectAnswersPercent = result.correctAnswersCount / words.length * 100
+const getPercentage = (_result, _words) => _result / _words * 100
 
-if (userCorrectAnswersPercent > settings.correctAnswersMinPercent) {
-    alert(notificationMessages.result.finishSuccess)
-} else {
-    alert(notificationMessages.result.finishUnsuccess)
+const showResults = (_result, _words, _settings, _notificationMessages) => {
+    let userCorrectAnswersPercent = getPercentage(_result.correctAnswersCount, _words.length)
+    document.write('-------------------', '<br>')
+    document.write('<b>', 'Total results: ', userCorrectAnswersPercent, ' %', '</b>')
+
+    if (userCorrectAnswersPercent > _settings.correctAnswersMinPercent) {
+        alert(_notificationMessages.result.finishSuccess)
+    } else {
+        alert(_notificationMessages.result.finishUnsuccess)
+    }
 }
+
+//=======================
+
+
+showHelloMessage(notificationMessages.start.hello)
+startTraining(words, result)
+showResults(result, words, settings, notificationMessages)
+
+
